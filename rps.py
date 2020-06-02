@@ -1,20 +1,20 @@
-#!/usr/bin/env python3
+import random
+import time
 
 """This program plays a game of Rock, Paper, Scissors between two Players,
 and reports both Player's scores each round."""
 
-moves = ['rock', 'paper', 'scissors']
-
 """The Player class is the parent class for all of the Players
 in this game"""
-
-
 class Player:
+    moves = ['rock', 'paper', 'scissors']
     def move(self):
         return 'rock'
 
     def learn(self, my_move, their_move):
-        pass
+        # learn's the player's move
+        self.my_move = my_move
+        self.their_move = their_move
 
 
 def beats(one, two):
@@ -22,7 +22,33 @@ def beats(one, two):
             (one == 'scissors' and two == 'paper') or
             (one == 'paper' and two == 'rock'))
 
+# random player
+class RandomPlayer (Player):
+    def move(self):
+        return random.choice(self.moves)
 
+# reflects the player's last move
+class ReflectPlayer(Player):
+    def move(self):
+        return self.their_move
+# cycles player's move
+class CyclePlayer(Player):
+    def move(self):
+        if self.my_move == self.moves[0]:
+            return self.moves[1]
+        elif self.my_move == self.moves[1]:
+            return self.moves[2]
+        else:
+            return self.moves[0]
+
+class HumanPlayer(Player):
+    def move(self):
+        while True:
+            humanMove = input("\nrock | paper | scissors ?\n").lower()
+            if humanMove in self.moves:
+                return humanMove
+            elif humanMove == 'exit':
+                exit()
 class Game:
     def __init__(self, p1, p2):
         self.p1 = p1
