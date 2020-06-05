@@ -116,7 +116,7 @@ class Game:
     def TotalRound(self):
         while True:
             self.rounds = input("How many rounds would you like to play? ")
-            # checking for an integer number
+            # check for input
             if self.rounds.isdigit() and int(self.rounds) > 0:
                 print(self.rounds)
                 return self.rounds
@@ -141,7 +141,7 @@ class Game:
 
     def play_again(self):
         while True:
-            ask = input("Would you like to play again (Y|N)?").lower()
+            ask = input("Would you like to play again (Y|N)? ").lower()
             if (ask == "y"):
                 self.play_game()
             elif (ask == "n"):
@@ -164,10 +164,11 @@ class MainGame:
         move1 = self.p1.move()
         move2 = self.p2.move()
 
-        game.print_pause(f"\nPlayer 1: {move1}  Player 2: {move2}", 3)
+        game.print_pause(f"Player 1: {move1}  Player 2: {move2}", 3)
         self.p1.learn(move1, move2)
         self.p2.learn(move2, move1)
 
+        # score update
         if self.beats(move1, move2):
             game.HumanScore += 1
         elif self.beats(move2, move1):
