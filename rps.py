@@ -95,7 +95,7 @@ class Game:
         print("-" * column)
 
     def intro(self):
-        self.print_pause("Welcome To Text Based Rock|Paper|Scissors!", 1)
+        self.print_pause("Welcome To Text Based Rock|Paper|Scissors! Game", 1)
         self.print_pause("To exit during the game please type 'exit'", 2)
 
     def results(self):
