@@ -108,7 +108,7 @@ class Game:
         self.print_pause(f"You: {move1}  Computer: {move2}", 3)
         self.p1.learn(move1, move2)
         self.p2.learn(move2, move1)
-
+        # score update
         if(self.beats(move1, move2)):
             self.p1_score += 1
         elif(self.beats(move2, move1)):
@@ -116,8 +116,10 @@ class Game:
 
     def display_score(self):
         self.clear()
+        print("-" * 15)
         print(f"Your Score: {self.p1_score}")
         print(f"  Computer: {self.p2_score}")
+        print("-" * 15)
         time.sleep(3)
 
     def play_game(self):
