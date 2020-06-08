@@ -127,7 +127,7 @@ class Game:
         rounds = self.total_rounds()
         for round in range(rounds):
             self.display_score()
-            self.print_pause(f"Round {round + 1}/{rounds}:", 2)
+            self.print_pause(f"Round {round + 1} out of {rounds}:", 2)
             self.play_round()
         self.display_score()
         self.print_pause("Game over!", 3)
